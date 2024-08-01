@@ -17,6 +17,7 @@ use Hyperf\Database\Model\Collection as ModelCollection;
 use Hyperf\Database\Model\Model;
 
 use function Hyperf\Collection\collect;
+use function Hyperf\Config\config;
 
 class Engine
 {
@@ -198,7 +199,7 @@ class Engine
             'refresh' => config('scout.document_refresh', true),
             'index' => $model->searchableAs(),
             'body' => [
-                'query' => ['match_all' => []],
+                'query' => ['match_all' => new \stdClass()],
             ],
         ]);
     }
@@ -244,7 +245,7 @@ class Engine
             'ignore_throttled' => false,
         ];
 
-        return $this->elasticsearch->count($query);
+        return $this->elasticsearch->count($query)->asArray();
     }
 
     /**
@@ -278,6 +279,6 @@ class Engine
             );
         }
 
-        return $this->elasticsearch->search($query);
+        return $this->elasticsearch->search($query)->asArray();
     }
 }

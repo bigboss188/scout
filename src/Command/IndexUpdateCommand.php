@@ -41,7 +41,7 @@ class IndexUpdateCommand extends AbstractCommand
             'index' => $indexName,
         ];
 
-        if (! $indices->exists($params)) {
+        if (200 != $indices->exists($params)->getStatusCode()) {
             throw new \LogicException(sprintf(
                 'The index %s does not exist',
                 $indexName
@@ -50,8 +50,8 @@ class IndexUpdateCommand extends AbstractCommand
 
         try {
             $indices->close($params);
-            if ($settings = $model->getScoutIndexSettings()) {
-                $indices->putSettings(Arr::add($params, 'body.settings', $settings));
+            if ($settings = $model->getScoutSettings()) {
+                $indices->putSettings(Arr::add($params, 'body.settings', $settings['index'] ?? []));
             }
             $indices->open($params);
         } catch (\Exception $exception) {

@@ -30,11 +30,11 @@ class IndexRecreateCommand extends AbstractCommand
         $model = $this->input->getArgument('model');
 
         $this->call('scout:index:drop', [
-            'mode' => $model,
+            'model' => $model,
         ]);
 
         $this->call('scout:index:create', [
-            'mode' => $model,
+            'model' => $model,
         ]);
     }
 }

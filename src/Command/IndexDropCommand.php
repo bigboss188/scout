@@ -33,7 +33,7 @@ class IndexDropCommand extends AbstractCommand
             'index' => $indexName,
         ];
 
-        if (! $indices->exists($params)) {
+        if (200 != $indices->exists($params)->getStatusCode()) {
             throw new \LogicException(sprintf(
                 'The index %s does not exist',
                 $indexName

@@ -18,6 +18,7 @@ use Hyperf\Database\Model\Scope;
 use HyperfExt\Scout\Event\ModelsFlushed;
 use HyperfExt\Scout\Event\ModelsImported;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use function Hyperf\Config\config;
 
 class SearchableScope implements Scope
 {

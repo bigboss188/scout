@@ -8,6 +8,7 @@ declare(strict_types=1);
  * @contact  eric@zhu.email
  * @license  https://github.com/hyperf-ext/scout/blob/master/LICENSE
  */
+
 namespace HyperfExt\Scout\Command;
 
 use Hyperf\Collection\Arr;
@@ -46,7 +47,7 @@ class MappingUpdateCommand extends AbstractCommand
             'index' => $indexName,
         ];
 
-        if (! $indices->exists($params)) {
+        if (200 != $indices->exists($params)->getStatusCode()) {
             throw new \LogicException(sprintf(
                 'The index %s does not exist',
                 $indexName

@@ -99,10 +99,3 @@ class ModelStubForMakeAllSearchable extends SearchableModel
         return $mock;
     }
 }
-
-namespace HyperfExt\Scout;
-
-function config($arg, mixed $true = '')
-{
-    return false;
-}

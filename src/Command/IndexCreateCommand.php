@@ -39,8 +39,7 @@ class IndexCreateCommand extends AbstractCommand
         $params = [
             'index' => $indexName,
         ];
-
-        if ($indices->exists($params)) {
+        if (200 == $indices->exists($params)->getStatusCode()) {
             throw new \LogicException(sprintf(
                 'The index %s is already existed',
                 $indexName
