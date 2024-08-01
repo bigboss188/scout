@@ -29,7 +29,6 @@
     "require": {
         "php": ">=8.1",
         "ext-swoole": ">=5.0",
-        "joba/elasticsearch": "~3.1.0",
         "hyperf/command": "~3.1.0",
         "hyperf/config": "~3.1.0",
         "hyperf/db-connection": "~3.1.0",

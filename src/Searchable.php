@@ -20,7 +20,7 @@ use Hyperf\ModelListener\Collector\ListenerCollector;
 
 use function Hyperf\Support\class_uses_recursive;
 use function Hyperf\Support\make;
-use function \Hyperf\Config\config;
+use function Hyperf\Config\config;
 trait Searchable
 {
     /**

@@ -21,6 +21,7 @@ use ONGR\ElasticsearchDSL\Query\TermLevel\ExistsQuery;
 use ONGR\ElasticsearchDSL\Search;
 use ONGR\ElasticsearchDSL\Sort\FieldSort;
 use function Hyperf\Tappable\tap;
+use function Hyperf\Support\make;
 /**
  * @mixin QueryBuilder
  */

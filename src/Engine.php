@@ -10,8 +10,8 @@ declare(strict_types=1);
  */
 namespace HyperfExt\Scout;
 
-use Elasticsearch\Client;
-use Elasticsearch\Client as Elasticsearch;
+use Elastic\Elasticsearch\Client;
+use Elastic\Elasticsearch\Client as Elasticsearch;
 use Hyperf\Collection\Collection as BaseCollection;
 use Hyperf\Database\Model\Collection as ModelCollection;
 use Hyperf\Database\Model\Model;
