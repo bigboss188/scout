@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace HyperfExt\Scout;
 
 use Elastic\Elasticsearch\Client;
-use Elastic\Elasticsearch\Client as Elasticsearch;
 use Hyperf\Collection\Collection as BaseCollection;
 use Hyperf\Database\Model\Collection as ModelCollection;
 use Hyperf\Database\Model\Model;
@@ -24,14 +23,14 @@ class Engine
     /**
      * The Elasticsearch client instance.
      *
-     * @var Elasticsearch
+     * @var Client
      */
-    protected Elasticsearch $elasticsearch;
+    protected Client $elasticsearch;
 
     /**
      * Create a new engine instance.
      */
-    public function __construct(Elasticsearch $elasticsearch)
+    public function __construct(Client $elasticsearch)
     {
         $this->elasticsearch = $elasticsearch;
     }
