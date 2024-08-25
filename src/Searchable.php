@@ -8,6 +8,7 @@ declare(strict_types=1);
  * @contact  eric@zhu.email
  * @license  https://github.com/hyperf-ext/scout/blob/master/LICENSE
  */
+
 namespace HyperfExt\Scout;
 
 use Hyperf\Context\ApplicationContext;
@@ -21,6 +22,7 @@ use Hyperf\ModelListener\Collector\ListenerCollector;
 use function Hyperf\Support\class_uses_recursive;
 use function Hyperf\Support\make;
 use function Hyperf\Config\config;
+
 trait Searchable
 {
     /**
@@ -201,7 +203,7 @@ trait Searchable
      */
     public function searchableAs(): string
     {
-        return config('scout.prefix') . $this->getTable();
+        return $this->getTable() . '_' . config('scout.prefix');
     }
 
     /**
@@ -225,7 +227,7 @@ trait Searchable
      */
     public function syncWithSearchUsingConcurrency(): int
     {
-        return (int) config('scout.concurrency', 100);
+        return (int)config('scout.concurrency', 100);
     }
 
     /**
@@ -305,13 +307,13 @@ trait Searchable
      */
     protected static function dispatchAsyncSearchableJob(callable $job): void
     {
-        if (! Coroutine::inCoroutine()) {
+        if (!Coroutine::inCoroutine()) {
             $job();
             return;
         }
 
         if (defined('SCOUT_RUNNING_IN_COMMAND')) {
-            if (! ($channel = Context::get($channelId = 'scout_async_searchable'))) {
+            if (!($channel = Context::get($channelId = 'scout_async_searchable'))) {
                 Context::set($channelId, $channel = new Concurrent((new static())->syncWithSearchUsingConcurrency()));
             }
             $channel->create($job);
